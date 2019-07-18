@@ -78,7 +78,7 @@ namespace NumberToNepaliCurrencyText
             return wordNumber;
         }
 
-        private static string appendPaisaIfPaisaPresent(string[] arrNumber, string[] numbersUptoHundred, string wordNumber)
+       private static string appendPaisaIfPaisaPresent(string[] arrNumber, string[] numbersUptoHundred, string wordNumber)
         {
             bool isNumberDecimal = arrNumber.Length == 2;
             if (isNumberDecimal)
@@ -86,7 +86,8 @@ namespace NumberToNepaliCurrencyText
                 int paisa = Convert.ToInt32(arrNumber[1]);
                 if (paisa > 0)
                 {
-                    wordNumber += $" {numbersUptoHundred[Convert.ToInt32(arrNumber[1])]} पैसा";
+                    int indexOfPaisa = paisa > 9 ? paisa : (paisa * 10);
+                    wordNumber += $" {numbersUptoHundred[indexOfPaisa]} पैसा";
                 }
             }
 
